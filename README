@@ -1,0 +1,334 @@
+Para poder trabajar con el proyecto, al clonarlo debe ejecutar 'dotnet restore' para bajar los paquetes nuget necesarios
+
+- Entity Framework
+- Unity y Unity.Mvc5
+
+Unity para ejecutar la inyeccion de dependencias (no olvides agregar el RegisterComponents generado por Unity en ApplicationStart)
+
+
+
+Ahora eres experto en desarrollo de software y quiero que me ayudes a crear un proyecto de gestion documental basado en un CRM, se llama Portal.
+
+Voy a comenzar con .net framework 4.8, en el cual utilizaré los siguientes elementos:
+
+- Onion architecture
+- Entity framework
+- Unity (para inyeccion de dependencias)
+- JQuery y bootstrap (por defecto en .net)
+- SQL SERVER 2022
+
+quiero que me des el paso a paso desde como instalar entity framework y un flujo de trabajo para desarrollar módulos en mi aplicativo, toma de ejemplo una entidad llamada Rol
+
+ChatGPT Plus
+Perfecto. A continuación te presento un paso a paso detallado para crear tu proyecto Portal, una solución de gestión documental basada en un CRM, utilizando .NET Framework 4.8, la arquitectura Onion, Entity Framework, Unity para inyección de dependencias, jQuery/Bootstrap, y SQL Server 2022.
+
+🔧 1. Configuración Inicial del Proyecto
+Paso 1: Crear la solución
+Crea una solución vacía en Visual Studio 2022:
+
+Nombre de la solución: Portal
+
+Tipo de proyecto: Empty Solution
+
+Paso 2: Crear los proyectos según la Onion Architecture
+Dentro de la solución crea los siguientes proyectos:
+
+Capa	Proyecto	Tipo de Proyecto
+Dominio	Portal.Domain	Class Library (.NET Framework)
+Aplicación	Portal.Application	Class Library (.NET Framework)
+Infraestructura	Portal.Infrastructure	Class Library (.NET Framework)
+Web (UI)	Portal.Web	ASP.NET MVC (.NET Framework 4.8)
+Datos (EF)	Portal.Infrastructure.Data	Class Library (.NET Framework)
+Inyección	Portal.Infrastructure.IoC	Class Library (.NET Framework)
+
+Recomendación: Usa carpetas dentro de cada proyecto para organizar entidades, interfaces, servicios, etc.
+
+📦 2. Instalación de Paquetes NuGet
+En Portal.Infrastructure.Data
+bash
+Copiar
+Editar
+Install-Package EntityFramework
+En Portal.Infrastructure.IoC
+bash
+Copiar
+Editar
+Install-Package Unity
+Install-Package Unity.Mvc
+En Portal.Web
+bash
+Copiar
+Editar
+Install-Package Unity.Mvc
+Install-Package Microsoft.AspNet.Mvc
+Install-Package jQuery
+Install-Package bootstrap
+🏛️ 3. Diseño de la Entidad Rol (Capa Dominio)
+En Portal.Domain/Entities/Rol.cs
+csharp
+Copiar
+Editar
+namespace Portal.Domain.Entities
+{
+    public class Rol
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+    }
+}
+🧩 4. Interfaces de Repositorio (Dominio)
+En Portal.Domain/Interfaces/IRepository.cs
+csharp
+Copiar
+Editar
+using System.Collections.Generic;
+
+namespace Portal.Domain.Interfaces
+{
+    public interface IRepository<T> where T : class
+    {
+        T GetById(int id);
+        IEnumerable<T> GetAll();
+        void Insert(T entity);
+        void Update(T entity);
+        void Delete(T entity);
+        void Save();
+    }
+}
+En Portal.Domain/Interfaces/IRolRepository.cs
+csharp
+Copiar
+Editar
+using Portal.Domain.Entities;
+
+namespace Portal.Domain.Interfaces
+{
+    public interface IRolRepository : IRepository<Rol>
+    {
+        // Métodos adicionales específicos de Rol
+    }
+}
+🗃️ 5. Implementación del Repositorio (Infraestructura)
+En Portal.Infrastructure.Data/Context/PortalDbContext.cs
+csharp
+Copiar
+Editar
+using System.Data.Entity;
+using Portal.Domain.Entities;
+
+namespace Portal.Infrastructure.Data.Context
+{
+    public class PortalDbContext : DbContext
+    {
+        public PortalDbContext() : base("name=PortalConnection") { }
+
+        public DbSet<Rol> Roles { get; set; }
+    }
+}
+En Portal.Infrastructure.Data/Repositories/RolRepository.cs
+csharp
+Copiar
+Editar
+using Portal.Domain.Entities;
+using Portal.Domain.Interfaces;
+using Portal.Infrastructure.Data.Context;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Portal.Infrastructure.Data.Repositories
+{
+    public class RolRepository : IRolRepository
+    {
+        private readonly PortalDbContext _context;
+
+        public RolRepository(PortalDbContext context)
+        {
+            _context = context;
+        }
+
+        public void Delete(Rol entity) => _context.Roles.Remove(entity);
+        public IEnumerable<Rol> GetAll() => _context.Roles.ToList();
+        public Rol GetById(int id) => _context.Roles.Find(id);
+        public void Insert(Rol entity) => _context.Roles.Add(entity);
+        public void Update(Rol entity) => _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+        public void Save() => _context.SaveChanges();
+    }
+}
+🧠 6. Lógica de Aplicación
+En Portal.Application/Services/RolService.cs
+csharp
+Copiar
+Editar
+using Portal.Domain.Entities;
+using Portal.Domain.Interfaces;
+using System.Collections.Generic;
+
+namespace Portal.Application.Services
+{
+    public class RolService
+    {
+        private readonly IRolRepository _rolRepository;
+
+        public RolService(IRolRepository rolRepository)
+        {
+            _rolRepository = rolRepository;
+        }
+
+        public IEnumerable<Rol> GetAllRoles() => _rolRepository.GetAll();
+        public Rol GetRol(int id) => _rolRepository.GetById(id);
+        public void CreateRol(Rol rol)
+        {
+            _rolRepository.Insert(rol);
+            _rolRepository.Save();
+        }
+
+        public void UpdateRol(Rol rol)
+        {
+            _rolRepository.Update(rol);
+            _rolRepository.Save();
+        }
+
+        public void DeleteRol(int id)
+        {
+            var rol = _rolRepository.GetById(id);
+            _rolRepository.Delete(rol);
+            _rolRepository.Save();
+        }
+    }
+}
+🔄 7. Inyección de Dependencias (Unity)
+En Portal.Infrastructure.IoC/DependencyContainer.cs
+csharp
+Copiar
+Editar
+using Microsoft.Practices.Unity;
+using Portal.Application.Services;
+using Portal.Domain.Interfaces;
+using Portal.Infrastructure.Data.Repositories;
+
+namespace Portal.Infrastructure.IoC
+{
+    public static class DependencyContainer
+    {
+        public static void RegisterTypes(IUnityContainer container)
+        {
+            container.RegisterType<IRolRepository, RolRepository>();
+            container.RegisterType<RolService>();
+        }
+    }
+}
+En Portal.Web/Global.asax.cs
+csharp
+Copiar
+Editar
+using Portal.Infrastructure.IoC;
+using System.Web.Mvc;
+using Unity;
+using Unity.Mvc5;
+
+protected void Application_Start()
+{
+    var container = new UnityContainer();
+    DependencyContainer.RegisterTypes(container);
+    DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+    
+    AreaRegistration.RegisterAllAreas();
+    RouteConfig.RegisterRoutes(RouteTable.Routes);
+}
+🌐 8. Controlador y Vistas
+En Portal.Web/Controllers/RolController.cs
+csharp
+Copiar
+Editar
+using Portal.Application.Services;
+using Portal.Domain.Entities;
+using System.Web.Mvc;
+
+namespace Portal.Web.Controllers
+{
+    public class RolController : Controller
+    {
+        private readonly RolService _rolService;
+
+        public RolController(RolService rolService)
+        {
+            _rolService = rolService;
+        }
+
+        public ActionResult Index()
+        {
+            var roles = _rolService.GetAllRoles();
+            return View(roles);
+        }
+
+        public ActionResult Create() => View();
+
+        [HttpPost]
+        public ActionResult Create(Rol rol)
+        {
+            if (ModelState.IsValid)
+            {
+                _rolService.CreateRol(rol);
+                return RedirectToAction("Index");
+            }
+            return View(rol);
+        }
+    }
+}
+En Views/Rol/Index.cshtml
+html
+Copiar
+Editar
+@model IEnumerable<Portal.Domain.Entities.Rol>
+
+<h2>Roles</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr><th>Id</th><th>Nombre</th><th>Descripción</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Nombre</td>
+            <td>@item.Descripcion</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="@Url.Action("Create")">Crear Rol</a>
+📁 9. Conexión a SQL Server
+En Web.config del proyecto Web:
+
+xml
+Copiar
+Editar
+<connectionStrings>
+  <add name="PortalConnection" 
+       connectionString="Server=.\SQLEXPRESS;Database=PortalDb;Trusted_Connection=True;"
+       providerName="System.Data.SqlClient"/>
+</connectionStrings>
+🧪 10. Migraciones (si deseas usar Code First Migrations)
+bash
+Copiar
+Editar
+Enable-Migrations -ProjectName Portal.Infrastructure.Data
+Add-Migration InitialCreate
+Update-Database
+
+
+Flujo de trabajo para nuevos módulos
+Dominio: Entidad + interfaz de repositorio
+
+Infraestructura.Data: Contexto EF + repositorio concreto
+
+Application: Servicio de dominio
+
+IoC: Registrar dependencias en DependencyContainer
+
+Web: Controlador MVC + vistas
+
+Configuración: Unity + conexiones
