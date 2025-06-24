@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PortalCOSIE.Domain.Entities.Rol>
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr><th>Id</th><th>Nombre</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nombre</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="@Url.Action("Create")">Crear Rol</a>
