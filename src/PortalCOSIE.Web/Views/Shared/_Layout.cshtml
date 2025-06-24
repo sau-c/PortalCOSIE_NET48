@@ -1,40 +1,207 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Portal COSIE</title>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #5A1236;
+            color: white;
+            position: fixed;
+            padding-left: 5px;
+            top: 0;
+            bottom: 0;
+            z-index: 1000;
+            padding-top: 1rem;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #999 transparent;
+        }
+
+            .sidebar a {
+                color: white;
+                /*display: block;*/
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+            }
+
+                .sidebar a.nav-link:hover {
+                    background-color: #721845;
+                    transition: background-color 0.3s ease-in;
+                }
+
+        .accordion-button {
+            background-color: transparent;
+            color: white;
+        }
+            .accordion-button:hover {
+                background-color: #721845;
+            }
+
+            .accordion-button:not(.collapsed) {
+                background-color: #721845;
+                color: white;
+            }
+
+        .accordion-body a {
+            padding-left: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Asegura que no haya márgenes entre enlaces hijos */
+        .accordion-body .nav-link {
+            margin: 0 !important;
+            padding: 6px 12px;
+            border-radius: 0px 0px 0px 12px;
+        }
+
+        /* Elimina espacio adicional entre items */
+        .accordion-body {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .accordion-button::after {
+            filter: brightness(0) invert(1); /* Blancas */
+        }
+
+        .main-wrapper {
+            margin-left: 220px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        footer {
+            background-color: #dddddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.7rem;
+        }
+
+        /*ESTILOS GENERALES PARA LA APLICACION*/
+        table td {
+            padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
+        }
+
+        .card-body {
+            scrollbar-width: thin;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+
+    <!-- Sidebar con Accordion -->
+    <nav class="sidebar d-flex flex-column">
+        <a href="@Url.Action("Index", "Dashboard")" class="px-3 fs-5 mb-2">
+            <i class="fas fa-house me-2"></i> UPIITA COSIE
+        </a>
+        <hr class="text-white mx-2">
+
+        <div class="accordion" id="accordionSidebar">
+
+            <!-- Dashboard -->
+            <div class="accordion-item bg-transparent border-0">
+                <a href="@Url.Action("Index", "Dashboard")" class="nav-link text-white px-3 py-2">
+                    <i class="fas fa-chart-bar me-2"></i>Dashboard
+                </a>
+            </div>
+
+            <!-- Trámites -->
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header" id="headingTramites">
+                    <button class="accordion-button collapsed shadow-none px-3 py-2"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseTramites"
+                            aria-expanded="false" aria-controls="collapseTramites">
+                        <i class="fas fa-folder me-2"></i> Trámites
+                    </button>
+                </h2>
+                <div id="collapseTramites" class="accordion-collapse collapse" aria-labelledby="headingTramites"
+                     data-bs-parent="#accordionSidebar">
+                    <div class="accordion-body ps-4">
+                        <a href="@Url.Action("Index", "Tramite")" class="nav-link text-white"><i class="fas fa-search me-2"></i>Consulta
+                        </a>
+                        <a href="@Url.Action("Expediente", "Tramite")" class="nav-link text-white"><i class="fas fa-file-alt me-2"></i>Expedientes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usuarios -->
+            <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header" id="headingUsuarios">
+                    <button class="accordion-button collapsed shadow-none px-3 py-2"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios"
+                            aria-expanded="false" aria-controls="collapseUsuarios">
+                        <i class="fas fa-users me-2"></i>Usuarios
+                    </button>
+                </h2>
+                <div id="collapseUsuarios" class="accordion-collapse collapse" aria-labelledby="headingUsuarios"
+                     data-bs-parent="#accordionSidebar">
+                    <div class="accordion-body ps-4">
+                        <a href="@Url.Action("Index", "Usuario")" class="nav-link text-white"><i class="fas fa-user-lock me-2"></i>Gestión</a>
+                        <a href="@Url.Action("Index", "Rol")" class="nav-link text-white"><i class="fas fa-mask me-2"></i>Roles</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                        <a href="@Url.Action("Index", "Facultad")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Facultades</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
+
+    <!-- Contenido principal -->
+    <div class="main-wrapper">
+        <div class="main-content">
+            @RenderBody()
+        </div>
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Portal COSIE</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+    @*<script>
+        $(function () {
+            
+        });
+    </script>*@
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
