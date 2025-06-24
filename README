@@ -1,26 +1,9 @@
-Para poder trabajar con el proyecto, al clonarlo debe ejecutar 'dotnet restore' para bajar los paquetes nuget necesarios
+Para poder trabajar con el proyecto, al clonarlo debe ejecutar 'dotnet restore' para bajar los paquetes nuget necesarios, en caso de errores limpiar la solucion primero antes de ejecutar la aplicacion
 
 - Entity Framework
 - Unity y Unity.Mvc5
 
 Unity para ejecutar la inyeccion de dependencias (no olvides agregar el RegisterComponents generado por Unity en ApplicationStart)
-
-
-
-Ahora eres experto en desarrollo de software y quiero que me ayudes a crear un proyecto de gestion documental basado en un CRM, se llama Portal.
-
-Voy a comenzar con .net framework 4.8, en el cual utilizaré los siguientes elementos:
-
-- Onion architecture
-- Entity framework
-- Unity (para inyeccion de dependencias)
-- JQuery y bootstrap (por defecto en .net)
-- SQL SERVER 2022
-
-quiero que me des el paso a paso desde como instalar entity framework y un flujo de trabajo para desarrollar módulos en mi aplicativo, toma de ejemplo una entidad llamada Rol
-
-ChatGPT Plus
-Perfecto. A continuación te presento un paso a paso detallado para crear tu proyecto Portal, una solución de gestión documental basada en un CRM, utilizando .NET Framework 4.8, la arquitectura Onion, Entity Framework, Unity para inyección de dependencias, jQuery/Bootstrap, y SQL Server 2022.
 
 🔧 1. Configuración Inicial del Proyecto
 Paso 1: Crear la solución
