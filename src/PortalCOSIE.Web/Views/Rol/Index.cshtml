@@ -4,9 +4,13 @@
 }
 
 <h2>Roles</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr><th>Id</th><th>Nombre</th></tr>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+        </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
@@ -14,6 +18,7 @@
             <tr>
                 <td>@item.Id</td>
                 <td>@item.Nombre</td>
+                <td>@item.Descripcion</td>
             </tr>
         }
     </tbody>
