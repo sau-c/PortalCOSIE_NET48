@@ -1,4 +1,5 @@
-﻿using PortalCOSIE.Domain.Entities;
+﻿using PortalCOSIE.Application.Interfaces;
+using PortalCOSIE.Domain.Entities;
 using PortalCOSIE.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PortalCOSIE.Application
 {
-    public class RolService
+    public class RolService : IRolService
     {
         private readonly IRolRepository _rolRepository;
 
@@ -17,21 +18,21 @@ namespace PortalCOSIE.Application
             _rolRepository = rolRepository;
         }
 
-        public IEnumerable<Rol> GetAllRoles() => _rolRepository.GetAll();
-        public Rol GetRol(int id) => _rolRepository.GetById(id);
-        public void CreateRol(Rol rol)
+        public IEnumerable<Rol> GetAll() => _rolRepository.GetAll();
+        public Rol GetById(int id) => _rolRepository.GetById(id);
+        public void Create(Rol rol)
         {
             _rolRepository.Insert(rol);
             _rolRepository.Save();
         }
 
-        public void UpdateRol(Rol rol)
+        public void Update(Rol rol)
         {
             _rolRepository.Update(rol);
             _rolRepository.Save();
         }
 
-        public void DeleteRol(int id)
+        public void Delete(int id)
         {
             var rol = _rolRepository.GetById(id);
             _rolRepository.Delete(rol);

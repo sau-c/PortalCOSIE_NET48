@@ -7,13 +7,13 @@ namespace PortalCOSIE.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class Correccion : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Correccion));
         
         string IMigrationMetadata.Id
         {
-            get { return "202506240653584_InitialCreate"; }
+            get { return "202506260521355_Correccion"; }
         }
         
         string IMigrationMetadata.Source

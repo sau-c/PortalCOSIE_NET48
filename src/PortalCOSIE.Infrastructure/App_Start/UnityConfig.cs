@@ -1,5 +1,8 @@
+using PortalCOSIE.Application;
+using PortalCOSIE.Application.Interfaces;
+using PortalCOSIE.Domain.Interfaces;
+using PortalCOSIE.Infrastructure.Repositories;
 using System;
-
 using Unity;
 
 namespace PortalCOSIE.Infrastructure
@@ -41,7 +44,8 @@ namespace PortalCOSIE.Infrastructure
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            //container.RegisterType<IRolService, RolService>();
+            //container.RegisterType<IRolRepository, RolRepository>();
         }
     }
 }

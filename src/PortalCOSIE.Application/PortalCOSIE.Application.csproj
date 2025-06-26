@@ -41,8 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IRolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RolService.cs" />
+    <Compile Include="Services\RolService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PortalCOSIE.Domain\PortalCOSIE.Domain.csproj">

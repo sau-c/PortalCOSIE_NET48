@@ -1,4 +1,5 @@
 ﻿using PortalCOSIE.Application;
+using PortalCOSIE.Application.Interfaces;
 using PortalCOSIE.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace PortalCOSIE.Web.Controllers
 {
     public class RolController : Controller
     {
-        private readonly RolService _rolService;
+        private readonly IRolService _rolService;
 
-        public RolController(RolService rolService)
+        public RolController(IRolService rolService)
         {
             _rolService = rolService;
         }
 
         public ActionResult Index()
         {
-            var roles = _rolService.GetAllRoles();
+            var roles = _rolService.GetAll();
             return View(roles);
         }
 
@@ -30,7 +31,7 @@ namespace PortalCOSIE.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _rolService.CreateRol(rol);
+                _rolService.Create(rol);
                 return RedirectToAction("Index");
             }
             return View(rol);

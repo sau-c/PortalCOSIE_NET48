@@ -1,4 +1,5 @@
 ﻿using PortalCOSIE.Application;
+using PortalCOSIE.Application.Interfaces;
 using PortalCOSIE.Domain.Interfaces;
 using PortalCOSIE.Infrastructure.Repositories;
 using System;
@@ -15,7 +16,7 @@ namespace PortalCOSIE.Infrastructure.IoC
         public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IRolRepository, RolRepository>();
-            container.RegisterType<RolService>();
+            container.RegisterType<IRolService, RolService>();
         }
     }
 }

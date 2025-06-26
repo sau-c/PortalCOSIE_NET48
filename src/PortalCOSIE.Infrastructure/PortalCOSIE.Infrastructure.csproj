@@ -95,9 +95,9 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Data\PortalDbContext.cs" />
     <Compile Include="IoC\DependencyContainer.cs" />
-    <Compile Include="Migrations\202506240653584_InitialCreate.cs" />
-    <Compile Include="Migrations\202506240653584_InitialCreate.Designer.cs">
-      <DependentUpon>202506240653584_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202506260521355_Correccion.cs" />
+    <Compile Include="Migrations\202506260521355_Correccion.Designer.cs">
+      <DependentUpon>202506260521355_Correccion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,8 +118,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202506240653584_InitialCreate.resx">
-      <DependentUpon>202506240653584_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202506260521355_Correccion.resx">
+      <DependentUpon>202506260521355_Correccion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

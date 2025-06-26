@@ -1,0 +1,8 @@
+Reiniciar la DB en SQL SERVER
+	Update-Database -TargetMigration:0
+
+Mostrar las migraciones
+	Get-Migrations
+
+Crear una nueva DB del modelo actual
+	Add-Migration "Nombre de la migracion"
