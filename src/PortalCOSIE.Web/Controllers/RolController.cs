@@ -18,20 +18,33 @@ namespace PortalCOSIE.Web.Controllers
             _rolService = rolService;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
-            var roles = _rolService.GetAll();
+            var roles = _rolService.ListarTodos();
             return View(roles);
         }
 
-        public ActionResult Create() => View();
+        [HttpGet]
+        public ActionResult Crear() => View();
 
         [HttpPost]
-        public ActionResult Create(Rol rol)
+        public ActionResult Crear(Rol rol)
         {
             if (ModelState.IsValid)
             {
-                _rolService.Create(rol);
+                _rolService.Crear(rol);
+                return RedirectToAction("Index");
+            }
+            return View(rol);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(Rol rol)
+        {
+            if (ModelState.IsValid)
+            {
+                _rolService.Actualizar(rol);
                 return RedirectToAction("Index");
             }
             return View(rol);

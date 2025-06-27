@@ -2,7 +2,7 @@
 
 namespace PortalCOSIE.Domain.Interfaces
 {
-    public interface IRolRepository : IRepository<Rol>
+    public interface IFacultadRepository : IRepository<Facultad>
     {
         // Métodos adicionales específicos
     }

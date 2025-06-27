@@ -2,11 +2,6 @@
 using PortalCOSIE.Application.Interfaces;
 using PortalCOSIE.Domain.Interfaces;
 using PortalCOSIE.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity;
 
 namespace PortalCOSIE.Infrastructure.IoC
@@ -15,8 +10,12 @@ namespace PortalCOSIE.Infrastructure.IoC
     {
         public static void RegisterTypes(IUnityContainer container)
         {
+            // Register services and repositories as needed
             container.RegisterType<IRolRepository, RolRepository>();
             container.RegisterType<IRolService, RolService>();
+            
+            container.RegisterType<IFacultadRepository, FacultadRepository>();
+            container.RegisterType<IFacultadService, FacultadService>();
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PortalCOSIE.Domain.Interfaces
 {
@@ -10,7 +6,7 @@ namespace PortalCOSIE.Domain.Interfaces
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
-        void Insert(T entity);
+        void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
         void Save();

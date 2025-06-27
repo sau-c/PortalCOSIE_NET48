@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace PortalCOSIE.Application.Interfaces
 {
-    public interface IRolService
+    public interface IFacultadService
     {
-        IEnumerable<Rol> ListarTodos();
-        Rol ObtenerPorId(int id);
-        void Crear(Rol rol);
-        void Actualizar(Rol rol);
+        IEnumerable<Facultad> ListarTodos();
+        Facultad ObtenerPorId(int id);
+        void Crear(Facultad facultad);
+        void Actualizar(Facultad facultad);
         void Eliminar(int id);
     }
 }

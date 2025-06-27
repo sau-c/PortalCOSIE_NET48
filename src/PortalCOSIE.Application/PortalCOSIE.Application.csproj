@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IFacultadService.cs" />
     <Compile Include="Interfaces\IRolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FacultadService.cs" />
     <Compile Include="Services\RolService.cs" />
   </ItemGroup>
   <ItemGroup>

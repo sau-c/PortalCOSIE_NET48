@@ -18,21 +18,29 @@ namespace PortalCOSIE.Application
             _rolRepository = rolRepository;
         }
 
-        public IEnumerable<Rol> GetAll() => _rolRepository.GetAll();
-        public Rol GetById(int id) => _rolRepository.GetById(id);
-        public void Create(Rol rol)
+        public IEnumerable<Rol> ListarTodos()
+        { 
+            return _rolRepository.GetAll();
+        }
+
+        public Rol ObtenerPorId(int id)
+        { 
+            return _rolRepository.GetById(id);
+        }
+
+        public void Crear(Rol rol)
         {
-            _rolRepository.Insert(rol);
+            _rolRepository.Add(rol);
             _rolRepository.Save();
         }
 
-        public void Update(Rol rol)
+        public void Actualizar(Rol rol)
         {
             _rolRepository.Update(rol);
             _rolRepository.Save();
         }
 
-        public void Delete(int id)
+        public void Eliminar(int id)
         {
             var rol = _rolRepository.GetById(id);
             _rolRepository.Delete(rol);

@@ -145,6 +145,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FacultadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,7 +206,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Rol\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPublic.cshtml" />
-    <Content Include="Views\Rol\Create.cshtml" />
+    <Content Include="Views\Rol\Crear.cshtml" />
+    <Content Include="Views\Facultad\Crear.cshtml" />
+    <Content Include="Views\Facultad\Eliminar.cshtml" />
+    <Content Include="Views\Facultad\Detalles.cshtml" />
+    <Content Include="Views\Facultad\Editar.cshtml" />
+    <Content Include="Views\Facultad\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

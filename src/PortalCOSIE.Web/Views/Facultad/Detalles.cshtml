@@ -1,0 +1,63 @@
+﻿@model PortalCOSIE.Domain.Entities.Facultad
+@{
+    ViewBag.Title = "Facultad";
+}
+
+<div>
+    <h4>Facultad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreadoPor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreadoPor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actualizado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actualizado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualizadoPor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualizadoPor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

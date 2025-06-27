@@ -18,11 +18,11 @@ namespace PortalCOSIE.Infrastructure.Repositories
             _context = context;
         }
 
-        public IEnumerable<Rol> GetAll() => _context.Rol.ToList();
-        public Rol GetById(int id) => _context.Rol.Find(id);
-        public void Insert(Rol entity) => _context.Rol.Add(entity);
-        public void Update(Rol entity) => _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-        public void Delete(Rol entity) => _context.Rol.Remove(entity);
+        public IEnumerable<Rol> GetAll() => _context.Roles.ToList();
+        public Rol GetById(int id) => _context.Roles.Find(id);
+        public void Add(Rol rol) => _context.Roles.Add(rol);
+        public void Update(Rol rol) => _context.Entry(rol).State = System.Data.Entity.EntityState.Modified;
+        public void Delete(Rol rol) => _context.Roles.Remove(rol);
         public void Save() => _context.SaveChanges();
     }
 }

@@ -91,14 +91,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Configurations\FacultadConfiguration.cs" />
+    <Compile Include="Data\Configurations\RolConfiguration.cs" />
     <Compile Include="Data\PortalDbContext.cs" />
     <Compile Include="IoC\DependencyContainer.cs" />
-    <Compile Include="Migrations\202506260521355_Correccion.cs" />
-    <Compile Include="Migrations\202506260521355_Correccion.Designer.cs">
-      <DependentUpon>202506260521355_Correccion.cs</DependentUpon>
+    <Compile Include="Migrations\202506270144598_Correccion.cs" />
+    <Compile Include="Migrations\202506270144598_Correccion.Designer.cs">
+      <DependentUpon>202506270144598_Correccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506271754185_ModuloFacultad.cs" />
+    <Compile Include="Migrations\202506271754185_ModuloFacultad.Designer.cs">
+      <DependentUpon>202506271754185_ModuloFacultad.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\RolFacultad.cs" />
     <Compile Include="Repositories\RolRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -116,12 +123,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202506260521355_Correccion.resx">
-      <DependentUpon>202506260521355_Correccion.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Start\" />
+    <EmbeddedResource Include="Migrations\202506270144598_Correccion.resx">
+      <DependentUpon>202506270144598_Correccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506271754185_ModuloFacultad.resx">
+      <DependentUpon>202506271754185_ModuloFacultad.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

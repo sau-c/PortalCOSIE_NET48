@@ -1,0 +1,61 @@
+﻿@model IEnumerable<PortalCOSIE.Domain.Entities.Facultad>
+@{
+    ViewBag.Title = "Facultades";
+}
+
+<p>
+    @Html.ActionLink("Nueva", "Crear")
+</p>
+<table class="table table-striped">
+    <tr class="table table-success">
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreadoPor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Actualizado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualizadoPor)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreadoPor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actualizado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualizadoPor)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

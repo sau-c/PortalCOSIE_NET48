@@ -13,7 +13,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Nombre = c.String(nullable: false, maxLength: 100),
-                        Descripcion = c.String(maxLength: 200),
+                        Descripcion = c.String(nullable: false, maxLength: 250),
                     })
                 .PrimaryKey(t => t.Id);
             
