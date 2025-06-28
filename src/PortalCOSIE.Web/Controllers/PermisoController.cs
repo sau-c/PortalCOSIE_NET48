@@ -8,37 +8,36 @@ using System.Web;
 using System.Web.Mvc;
 using PortalCOSIE.Application.Interfaces;
 using PortalCOSIE.Domain.Entities;
-using PortalCOSIE.Infrastructure.Data;
 
 namespace PortalCOSIE.Web.Controllers
 {
-    public class FacultadController : Controller
+    public class PermisoController : Controller
     {
-        private readonly IFacultadService _facultadService;
-        public FacultadController(IFacultadService facultadService)
+        private readonly IPermisoService _permisoService;
+        public PermisoController(IPermisoService permisoService)
         {
-            _facultadService = facultadService;
+            _permisoService = permisoService;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            var facultades = _facultadService.ListarTodos();
-            return View(facultades);
+            var permisos = _permisoService.ListarTodos();
+            return View(permisos);
         }
 
         [HttpGet]
         public ActionResult Crear() => View();
 
         [HttpPost]
-        public ActionResult Crear(Facultad facultad)
+        public ActionResult Crear(Permiso permiso)
         {
             if (ModelState.IsValid)
             {
-                _facultadService.Crear(facultad);
+                _permisoService.Crear(permiso);
                 return RedirectToAction("Index");
             }
-            return View(facultad);
+            return View(permiso);
         }
 
         [HttpGet]
@@ -48,27 +47,27 @@ namespace PortalCOSIE.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Facultad facultad = _facultadService.ObtenerPorId((int)id);
-            if (facultad == null)
+            Permiso permiso = _permisoService.ObtenerPorId((int)id);
+            if (permiso == null)
             {
                 return HttpNotFound();
             }
-            return View(facultad);
+            return View(permiso);
         }
         
-        // POST: Facultad/Edit/5
+        // POST: Permiso/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "Id,Nombre,Descripcion,Creado,CreadoPor,Actualizado,ActualizadoPor")] Facultad facultad)
+        public ActionResult Editar([Bind(Include = "Id,Nombre,Descripcion,Creado,CreadoPor,Actualizado,ActualizadoPor")] Permiso permiso)
         {
             if (ModelState.IsValid)
             {
-                _facultadService.Actualizar(facultad);
+                _permisoService.Actualizar(permiso);
                 return RedirectToAction("Index");
             }
-            return View(facultad);
+            return View(permiso);
         }
 
         [HttpGet]
@@ -78,20 +77,20 @@ namespace PortalCOSIE.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Facultad facultad = _facultadService.ObtenerPorId((int)id);
-            if (facultad == null)
+            Permiso permiso = _permisoService.ObtenerPorId((int)id);
+            if (permiso == null)
             {
                 return HttpNotFound();
             }
-            return View(facultad);
+            return View(permiso);
         }
 
-        // POST: Facultad/Delete/5
+        // POST: Permiso/Delete/5
         [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _facultadService.Eliminar(id);
+            _permisoService.Eliminar(id);
             return RedirectToAction("Index");
         }
         public ActionResult Detalles(int? id)
@@ -100,12 +99,12 @@ namespace PortalCOSIE.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Facultad facultad = _facultadService.ObtenerPorId((int)id);
-            if (facultad == null)
+            Permiso permiso = _permisoService.ObtenerPorId((int)id);
+            if (permiso == null)
             {
                 return HttpNotFound();
             }
-            return View(facultad);
+            return View(permiso);
         }
     }
 }

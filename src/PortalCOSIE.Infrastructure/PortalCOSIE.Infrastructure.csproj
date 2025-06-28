@@ -91,7 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Configurations\FacultadConfiguration.cs" />
+    <Compile Include="Data\Configurations\PermisoConfiguration.cs" />
     <Compile Include="Data\Configurations\RolConfiguration.cs" />
     <Compile Include="Data\PortalDbContext.cs" />
     <Compile Include="IoC\DependencyContainer.cs" />
@@ -103,9 +103,13 @@
     <Compile Include="Migrations\202506271754185_ModuloFacultad.Designer.cs">
       <DependentUpon>202506271754185_ModuloFacultad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506280121080_Permiso.cs" />
+    <Compile Include="Migrations\202506280121080_Permiso.Designer.cs">
+      <DependentUpon>202506280121080_Permiso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\RolFacultad.cs" />
+    <Compile Include="Repositories\PermisoRepository.cs" />
     <Compile Include="Repositories\RolRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506271754185_ModuloFacultad.resx">
       <DependentUpon>202506271754185_ModuloFacultad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506280121080_Permiso.resx">
+      <DependentUpon>202506280121080_Permiso.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

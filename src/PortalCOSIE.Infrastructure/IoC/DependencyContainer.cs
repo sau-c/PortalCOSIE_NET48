@@ -14,8 +14,8 @@ namespace PortalCOSIE.Infrastructure.IoC
             container.RegisterType<IRolRepository, RolRepository>();
             container.RegisterType<IRolService, RolService>();
             
-            container.RegisterType<IFacultadRepository, FacultadRepository>();
-            container.RegisterType<IFacultadService, FacultadService>();
+            container.RegisterType<IPermisoRepository, PermisoRepository>();
+            container.RegisterType<IPermisoService, PermisoService>();
         }
     }
 }

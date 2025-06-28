@@ -15,12 +15,12 @@ namespace PortalCOSIE.Infrastructure.Data
         public PortalDbContext() : base("name=DefaultConnection") { }
 
         public DbSet<Rol> Roles { get; set; }
-        public DbSet<Facultad> Facultades { get; set; }
+        public DbSet<Permiso> Permisos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new RolConfiguration());
-            modelBuilder.Configurations.Add(new FacultadConfiguration());
+            modelBuilder.Configurations.Add(new PermisoConfiguration());
         }
     }
 }

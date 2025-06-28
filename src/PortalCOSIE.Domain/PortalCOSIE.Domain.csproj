@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Common\AuditableEntity.cs" />
-    <Compile Include="Entities\Facultad.cs" />
+    <Compile Include="Entities\Permiso.cs" />
     <Compile Include="Entities\Rol.cs" />
-    <Compile Include="Interfaces\IFacultadRepository.cs" />
+    <Compile Include="Interfaces\IPermisoRepository.cs" />
     <Compile Include="Interfaces\IRolRepository.cs" />
     <Compile Include="Interfaces\Common\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace PortalCOSIE.Domain.Entities
 {
-    public class Facultad : AuditableEntity
+    public class Permiso : AuditableEntity
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

@@ -2,7 +2,7 @@
 
 namespace PortalCOSIE.Domain.Interfaces
 {
-    public interface IFacultadRepository : IRepository<Facultad>
+    public interface IPermisoRepository : IRepository<Permiso>
     {
         // Métodos adicionales específicos
     }

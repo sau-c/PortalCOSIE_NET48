@@ -1,13 +1,13 @@
-﻿@model IEnumerable<PortalCOSIE.Domain.Entities.Facultad>
+﻿@model IEnumerable<PortalCOSIE.Domain.Entities.Permiso>
 @{
-    ViewBag.Title = "Facultades";
+    ViewBag.Title = "Permisos";
 }
 
 <p>
     @Html.ActionLink("Nueva", "Crear")
 </p>
-<table class="table table-striped">
-    <tr class="table table-success">
+<table class="table table-striped table-bordered">
+    <tr class="table table-dark">
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>

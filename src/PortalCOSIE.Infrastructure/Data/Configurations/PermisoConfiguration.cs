@@ -5,11 +5,11 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace PortalCOSIE.Infrastructure.Configurations
 {
-    public class FacultadConfiguration : EntityTypeConfiguration<Facultad>
+    public class PermisoConfiguration : EntityTypeConfiguration<Permiso>
     {
-        public FacultadConfiguration()
+        public PermisoConfiguration()
         {
-            ToTable("Facultad")
+            ToTable("Permiso")
                 .HasKey(r => r.Id);
 
             Property(r => r.Nombre)

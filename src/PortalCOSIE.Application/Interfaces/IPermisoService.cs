@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace PortalCOSIE.Application.Interfaces
 {
-    public interface IFacultadService
+    public interface IPermisoService
     {
-        IEnumerable<Facultad> ListarTodos();
-        Facultad ObtenerPorId(int id);
-        void Crear(Facultad facultad);
-        void Actualizar(Facultad facultad);
+        IEnumerable<Permiso> ListarTodos();
+        Permiso ObtenerPorId(int id);
+        void Crear(Permiso facultad);
+        void Actualizar(Permiso facultad);
         void Eliminar(int id);
     }
 }
