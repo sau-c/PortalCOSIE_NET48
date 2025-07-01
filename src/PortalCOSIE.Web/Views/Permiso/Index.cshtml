@@ -3,59 +3,77 @@
     ViewBag.Title = "Permisos";
 }
 
-<p>
-    @Html.ActionLink("Nueva", "Crear")
-</p>
-<table class="table table-striped table-bordered">
-    <tr class="table table-dark">
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Creado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreadoPor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Actualizado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ActualizadoPor)
-        </th>
-        <th></th>
-    </tr>
+<div class="card shadow-sm">
+    <div class="card-header">
+        <div class="d-flex align-items-center justify-content-between flex-wrap">
+            <!-- Título a la izquierda -->
+            <h6 class="mb-0 fw-bold">Gestión de permisos</h6>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreadoPor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Actualizado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActualizadoPor)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.Id }) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id })
-            </td>
-        </tr>
-    }
+            <!-- Contenedor alineado a la derecha y compacto -->
+            <div class="d-flex align-items-center ms-auto gap-2">
+                <a href="@Url.Action("Crear", "Permiso")" class="btn btn-primary btn-sm shadow-sm">
+                    <i class="fas fa-plus me-2"></i>Nuevo
+                </a>
+            </div>
+        </div>
+    </div>
 
-</table>
+    <div class="card-body overflow-auto" style="height: calc(100vh - 150px);">
+        <div class="container">
+
+            <table class="table table-bordered">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedAt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedBy)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdatedAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdatedBy)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </div>
+</div>

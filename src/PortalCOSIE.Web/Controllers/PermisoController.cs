@@ -60,7 +60,7 @@ namespace PortalCOSIE.Web.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "Id,Nombre,Descripcion,Creado,CreadoPor,Actualizado,ActualizadoPor")] Permiso permiso)
+        public ActionResult Editar([Bind(Include = "Id,Nombre,Descripcion,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Permiso permiso)
         {
             if (ModelState.IsValid)
             {
@@ -92,19 +92,6 @@ namespace PortalCOSIE.Web.Controllers
         {
             _permisoService.Eliminar(id);
             return RedirectToAction("Index");
-        }
-        public ActionResult Detalles(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Permiso permiso = _permisoService.ObtenerPorId((int)id);
-            if (permiso == null)
-            {
-                return HttpNotFound();
-            }
-            return View(permiso);
         }
     }
 }

@@ -39,24 +39,24 @@
 
                 <div class="row mb-3">
                     <div class="col-lg-3">
-                        @Html.LabelFor(model => model.Creado, htmlAttributes: new { @class = "form-label" })
-                        @Html.EditorFor(model => model.Creado, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Creado, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.CreatedAt, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.CreatedAt, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CreatedAt, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
-                        @Html.LabelFor(model => model.CreadoPor, htmlAttributes: new { @class = "form-label" })
-                        @Html.EditorFor(model => model.CreadoPor, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CreadoPor, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
-                        @Html.LabelFor(model => model.Actualizado, htmlAttributes: new { @class = "form-label" })
-                        @Html.EditorFor(model => model.Actualizado, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Actualizado, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.UpdatedAt, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.UpdatedAt, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UpdatedAt, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
-                        @Html.LabelFor(model => model.ActualizadoPor, htmlAttributes: new { @class = "form-label" })
-                        @Html.EditorFor(model => model.ActualizadoPor, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ActualizadoPor, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.UpdatedBy, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.UpdatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UpdatedBy, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
