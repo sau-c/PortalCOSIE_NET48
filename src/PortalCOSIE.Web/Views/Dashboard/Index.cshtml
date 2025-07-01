@@ -1,6 +1,204 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Dashboard";
 }
 
-hola soy Dashboard View
+<div class="container mt-2">
+    <div class="row">
+        <!-- Gráfico de barras -->
+        <div class="col-lg-7 col-md-12 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-header fw-semibold bg-primary text-white">Documentos por Tipo</div>
+                <div class="card-body">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico de torta -->
+        <div class="col-lg-5 col-md-12 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-header fw-semibold bg-success text-white">Distribución por Estado</div>
+                <div class="card-body">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico de líneas -->
+        <div class="col-lg-12 col-md-12 mb-4">
+            <div class="card shadow">
+                <div class="card-header fw-semibold bg-info text-white">Documentos creados por mes</div>
+                <div class="card-body">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico radar -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow">
+                <div class="card-header fw-semibold bg-warning text-dark">Comparativa por Área</div>
+                <div class="card-body">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico de dona -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow">
+                <div class="card-header fw-semibold bg-danger text-white">Distribución por Departamento</div>
+                <div class="card-body">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico polar -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow">
+                <div class="card-header fw-semibold bg-secondary text-white">Accesos por Rol</div>
+                <div class="card-body">
+                    <canvas id="polarChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico scatter -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow">
+                <div class="card-header fw-semibold bg-dark text-white">Relación Fecha vs. Revisión</div>
+                <div class="card-body">
+                    <canvas id="scatterChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Bar Chart
+        new Chart(document.getElementById('barChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Factura', 'Informe', 'Contrato', 'Memo'],
+                datasets: [{
+                    label: 'Cantidad',
+                    data: [12, 19, 7, 5],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Pie Chart
+        new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Aprobado', 'Pendiente', 'Rechazado'],
+                datasets: [{
+                    data: [10, 6, 3],
+                    backgroundColor: [
+                        'rgba(40, 167, 69, 0.6)',
+                        'rgba(255, 193, 7, 0.6)',
+                        'rgba(220, 53, 69, 0.6)'
+                    ]
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Line Chart
+        new Chart(document.getElementById('lineChart'), {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Documentos',
+                    data: [5, 10, 8, 15, 12, 20],
+                    fill: false,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    tension: 0.4
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Radar Chart
+        new Chart(document.getElementById('radarChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Ventas', 'Legal', 'TI', 'RRHH', 'Calidad'],
+                datasets: [{
+                    label: 'Documentos revisados',
+                    data: [15, 12, 18, 10, 14],
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Doughnut Chart
+        new Chart(document.getElementById('doughnutChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Contabilidad', 'Legal', 'Operaciones'],
+                datasets: [{
+                    data: [14, 7, 9],
+                    backgroundColor: [
+                        'rgba(220, 53, 69, 0.6)',
+                        'rgba(23, 162, 184, 0.6)',
+                        'rgba(108, 117, 125, 0.6)'
+                    ]
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Polar Area Chart
+        new Chart(document.getElementById('polarChart'), {
+            type: 'polarArea',
+            data: {
+                labels: ['Administrador', 'Usuario', 'Auditor'],
+                datasets: [{
+                    data: [10, 25, 5],
+                    backgroundColor: [
+                        'rgba(108, 117, 125, 0.6)',
+                        'rgba(40, 167, 69, 0.6)',
+                        'rgba(0, 123, 255, 0.6)'
+                    ]
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Scatter Chart
+        new Chart(document.getElementById('scatterChart'), {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Revisiones',
+                    data: [
+                        { x: 1, y: 2 },
+                        { x: 2, y: 3 },
+                        { x: 3, y: 7 },
+                        { x: 4, y: 4 },
+                        { x: 5, y: 6 }
+                    ],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { title: { display: true, text: 'Días desde creación' } },
+                    y: { title: { display: true, text: 'Cantidad de revisiones' } }
+                }
+            }
+        });
+    </script>
+}

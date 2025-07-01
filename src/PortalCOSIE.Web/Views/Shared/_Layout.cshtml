@@ -11,6 +11,8 @@
 
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+    @*ChartJS*@
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         body {
@@ -50,6 +52,7 @@
             background-color: transparent;
             color: white;
         }
+
             .accordion-button:hover {
                 background-color: #721845;
             }
@@ -102,15 +105,6 @@
             text-align: center;
             font-size: 0.7rem;
         }
-
-        /*ESTILOS GENERALES PARA LA APLICACION*/
-        table td {
-            padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
-        }
-
-        .card-body {
-            scrollbar-width: thin;
-        }
     </style>
 </head>
 <body>
@@ -157,13 +151,13 @@
                     <button class="accordion-button collapsed shadow-none px-3 py-2"
                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios"
                             aria-expanded="false" aria-controls="collapseUsuarios">
-                        <i class="fas fa-users me-2"></i>Usuarios
+                        <i class="fas fa-users me-2"></i>Autorización
                     </button>
                 </h2>
                 <div id="collapseUsuarios" class="accordion-collapse collapse" aria-labelledby="headingUsuarios"
                      data-bs-parent="#accordionSidebar">
                     <div class="accordion-body ps-4">
-                        <a href="@Url.Action("Index", "Usuario")" class="nav-link text-white"><i class="fas fa-user-lock me-2"></i>Gestión</a>
+                        <a href="@Url.Action("Index", "Usuario")" class="nav-link text-white"><i class="fas fa-user-lock me-2"></i>Usuarios</a>
                         <a href="@Url.Action("Index", "Rol")" class="nav-link text-white"><i class="fas fa-mask me-2"></i>Roles</a>
                         <a href="@Url.Action("Index", "Permiso")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Permisos</a>
                         @*<a href="@Url.Action("Index", "Permiso")" class="nav-link text-white"><i class="fas fa-id-card me-2"></i>Permisos</a>

@@ -1,17 +1,18 @@
-﻿@model IEnumerable<PortalCOSIE.Domain.Entities.Permiso>
+﻿@model IEnumerable<PortalCOSIE.Domain.Entities.Usuario>
+
 @{
-    ViewBag.Title = "Permisos";
+    ViewBag.Title = "Usuarios";
 }
 
 <div class="card shadow">
     <div class="card-header">
         <div class="d-flex align-items-center justify-content-between flex-wrap">
             <!-- Título a la izquierda -->
-            <h6 class="mb-0 fw-bold">Gestión de permisos</h6>
+            <h6 class="mb-0 fw-bold">Gestión de usuarios</h6>
 
             <!-- Contenedor alineado a la derecha y compacto -->
             <div class="d-flex align-items-center ms-auto gap-2">
-                <a href="@Url.Action("Crear", "Permiso")" class="btn btn-primary btn-sm shadow-sm">
+                <a href="@Url.Action("Crear", "Usuario")" class="btn btn-primary btn-sm shadow-sm">
                     <i class="fas fa-plus me-2"></i>Nuevo
                 </a>
             </div>
@@ -24,10 +25,22 @@
             <table class="table table-bordered shadow">
                 <tr class="table-secondary">
                     <th>
+                        @Html.DisplayNameFor(model => model.Rol.Nombre)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Nombre)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Descripcion)
+                        @Html.DisplayNameFor(model => model.ApellidoPaterno)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApellidoMaterno)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Correo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Celular)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.CreatedAt)
@@ -48,10 +61,22 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Rol.Nombre)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Nombre)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Descripcion)
+                            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Correo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Celular)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CreatedAt)

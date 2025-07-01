@@ -18,6 +18,7 @@ namespace PortalCOSIE.Infrastructure.Configurations
 
             Property(r => r.Descripcion)
             .HasMaxLength(250);
+
         }
     }
 }

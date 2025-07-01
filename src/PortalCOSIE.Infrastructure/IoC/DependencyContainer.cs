@@ -16,6 +16,9 @@ namespace PortalCOSIE.Infrastructure.IoC
             
             container.RegisterType<IPermisoRepository, PermisoRepository>();
             container.RegisterType<IPermisoService, PermisoService>();
+
+            container.RegisterType<IUsuarioRepository, UsuarioRepository>();
+            container.RegisterType<IUsuarioService, UsuarioService>();
         }
     }
 }

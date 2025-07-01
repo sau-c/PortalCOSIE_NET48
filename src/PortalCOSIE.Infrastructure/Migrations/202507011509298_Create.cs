@@ -36,6 +36,26 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Usuario",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nombre = c.String(nullable: false, maxLength: 100),
+                        ApellidoPaterno = c.String(nullable: false, maxLength: 50),
+                        ApellidoMaterno = c.String(nullable: false, maxLength: 50),
+                        Correo = c.String(nullable: false, maxLength: 100),
+                        Celular = c.String(maxLength: 20),
+                        RolId = c.Int(nullable: false),
+                        CreatedAt = c.DateTime(nullable: false),
+                        CreatedBy = c.String(),
+                        UpdatedAt = c.DateTime(nullable: false),
+                        UpdatedBy = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Rol", t => t.RolId)
+                .Index(t => t.RolId);
+            
+            CreateTable(
                 "dbo.RolPermiso",
                 c => new
                     {
@@ -52,11 +72,14 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.Usuario", "RolId", "dbo.Rol");
             DropForeignKey("dbo.RolPermiso", "Permiso_Id", "dbo.Permiso");
             DropForeignKey("dbo.RolPermiso", "Rol_Id", "dbo.Rol");
             DropIndex("dbo.RolPermiso", new[] { "Permiso_Id" });
             DropIndex("dbo.RolPermiso", new[] { "Rol_Id" });
+            DropIndex("dbo.Usuario", new[] { "RolId" });
             DropTable("dbo.RolPermiso");
+            DropTable("dbo.Usuario");
             DropTable("dbo.Rol");
             DropTable("dbo.Permiso");
         }

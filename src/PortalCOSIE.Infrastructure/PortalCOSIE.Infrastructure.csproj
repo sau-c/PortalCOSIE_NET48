@@ -92,16 +92,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Configurations\PermisoConfiguration.cs" />
+    <Compile Include="Data\Configurations\UsuarioConfiguration.cs" />
     <Compile Include="Data\Configurations\RolConfiguration.cs" />
     <Compile Include="Data\PortalDbContext.cs" />
     <Compile Include="IoC\DependencyContainer.cs" />
-    <Compile Include="Migrations\202507010639506_Create.cs" />
-    <Compile Include="Migrations\202507010639506_Create.Designer.cs">
-      <DependentUpon>202507010639506_Create.cs</DependentUpon>
+    <Compile Include="Migrations\202507011509298_Create.cs" />
+    <Compile Include="Migrations\202507011509298_Create.Designer.cs">
+      <DependentUpon>202507011509298_Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PermisoRepository.cs" />
+    <Compile Include="Repositories\UsuarioRepository.cs" />
     <Compile Include="Repositories\RolRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,8 +124,8 @@
     <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202507010639506_Create.resx">
-      <DependentUpon>202507010639506_Create.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507011509298_Create.resx">
+      <DependentUpon>202507011509298_Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

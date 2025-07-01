@@ -16,11 +16,13 @@ namespace PortalCOSIE.Infrastructure.Data
 
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Permiso> Permisos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new RolConfiguration());
             modelBuilder.Configurations.Add(new PermisoConfiguration());
+            modelBuilder.Configurations.Add(new UsuarioConfiguration());
         }
     }
 }
