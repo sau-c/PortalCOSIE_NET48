@@ -2,12 +2,12 @@
 
 namespace PortalCOSIE.Domain.Entities
 {
-    public class AuditableEntity
+    public abstract class AuditableEntity
     {
         //public int Id { get; set; }
-        public DateTime Creado { get; set; }
-        public string CreadoPor { get; set; }
-        public DateTime Actualizado { get; set; }
-        public string ActualizadoPor { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public string UpdatedBy { get; set; }
     }
 }

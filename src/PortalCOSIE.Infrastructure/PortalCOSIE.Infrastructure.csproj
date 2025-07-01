@@ -95,17 +95,9 @@
     <Compile Include="Data\Configurations\RolConfiguration.cs" />
     <Compile Include="Data\PortalDbContext.cs" />
     <Compile Include="IoC\DependencyContainer.cs" />
-    <Compile Include="Migrations\202506270144598_Correccion.cs" />
-    <Compile Include="Migrations\202506270144598_Correccion.Designer.cs">
-      <DependentUpon>202506270144598_Correccion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202506271754185_ModuloFacultad.cs" />
-    <Compile Include="Migrations\202506271754185_ModuloFacultad.Designer.cs">
-      <DependentUpon>202506271754185_ModuloFacultad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202506280121080_Permiso.cs" />
-    <Compile Include="Migrations\202506280121080_Permiso.Designer.cs">
-      <DependentUpon>202506280121080_Permiso.cs</DependentUpon>
+    <Compile Include="Migrations\202507010639506_Create.cs" />
+    <Compile Include="Migrations\202507010639506_Create.Designer.cs">
+      <DependentUpon>202507010639506_Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,14 +122,8 @@
     <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202506270144598_Correccion.resx">
-      <DependentUpon>202506270144598_Correccion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202506271754185_ModuloFacultad.resx">
-      <DependentUpon>202506271754185_ModuloFacultad.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202506280121080_Permiso.resx">
-      <DependentUpon>202506280121080_Permiso.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507010639506_Create.resx">
+      <DependentUpon>202507010639506_Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,6 @@
-﻿namespace PortalCOSIE.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace PortalCOSIE.Domain.Entities
 {
     public class Permiso : AuditableEntity
     {
@@ -6,6 +8,6 @@
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         //public ICollection<Usuario> Usuarios { get; set; }
-        //public ICollection<FacultadRol> Facultades { get; set; }
+        public ICollection<Rol> Roles { get; set; }
     }
 }
