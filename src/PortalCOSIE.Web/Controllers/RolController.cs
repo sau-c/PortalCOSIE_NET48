@@ -4,6 +4,7 @@ using PortalCOSIE.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -35,6 +36,21 @@ namespace PortalCOSIE.Web.Controllers
             {
                 _rolService.Crear(rol);
                 return RedirectToAction("Index");
+            }
+            return View(rol);
+        }
+
+        [HttpGet]
+        public ActionResult Editar(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Rol rol = _rolService.ObtenerPorId((int)id);
+            if (rol == null)
+            {
+                return HttpNotFound();
             }
             return View(rol);
         }

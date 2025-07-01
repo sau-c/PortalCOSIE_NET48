@@ -3,25 +3,89 @@
     ViewBag.Title = "Roles";
 }
 
-<h5>Roles</h5>
-<table class="table table-bordered table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Nombre</td>
-                <td>@item.Descripcion</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card shadow-sm">
+    <div class="card-header">
+        <div class="d-flex align-items-center justify-content-between flex-wrap">
+            <!-- Título a la izquierda -->
+            <h6 class="mb-0 fw-bold">Gestión de roles</h6>
 
-<a class="btn btn-primary" href="@Url.Action("Crear")"><i class="fas fa-plus me-2"></i>Nuevo</a>
+            <!-- Contenedor alineado a la derecha y compacto -->
+            <div class="d-flex align-items-center ms-auto gap-2">
+                <input type="text" id="globalSearch" class="form-control-sm" placeholder="Filtrar palabras clave...">
+                <a href="@Url.Action("Crear", "Rol")" class="btn btn-primary btn-sm shadow-sm">
+                    <i class="fas fa-plus me-2"></i>Nuevo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body overflow-auto" style="height: calc(100vh - 150px);">
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+
+            @foreach (var item in Model)
+            {
+                <div class="col role-card">
+                    <div class="card shadow-sm">
+                        @*Header de la card*@
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-user-shield fa-lg me-2"></i>
+                                <h6 class="mb-0">@Html.DisplayFor(modelItem => item.Nombre)</h6>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge bg-success">Activo</span>
+                                <i class="fas fa-info-circle" data-bs-toggle="tooltip"
+                                   title="Creado por: @Html.DisplayFor(modelItem => item.CreadoPor) (2024-06-01)&#10;Modificado por: @Html.DisplayFor(modelItem => item.ActualizadoPor) (2024-06-15)"></i>
+                            </div>
+                        </div>
+                        @*Cuerpo de la card*@
+                        <div class="card-body d-flex flex-column">
+                            <div>
+                                <p class="fw-semibold mb-2 text-muted">Facultades:</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    @*@foreach (var permiso in item.Permisos)
+                                        {
+                                            <span class="badge bg-secondary rounded-pill px-3 py-2">permiso.Nombre</span>
+                                        }*@
+                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Control total</span>
+                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Gestión de documentos</span>
+                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Reportes</span>
+                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Reportes</span>
+                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Reportes</span>
+                                </div>
+                            </div>
+                        </div>
+                        @*Footer*@
+                        <div class="card-footer bg-body d-flex justify-content-end gap-2">
+                            <a href="@Url.Action("Editar", "Rol", new { id = item.Id })" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-edit me-1"></i>Editar
+                            </a>
+                            @* BOTON DE ELIMINACION QUE ACTIVA EL MODAL PARA LA CONFIRMACION DE LA ELIMINACION *@
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            //Barra de busqueda
+            $('#globalSearch').on('keyup', function () {
+                let searchTerm = $(this).val().toLowerCase();
+
+                $('.role-card').each(function () {
+                    // Buscar en todo el contenido excepto el footer
+                    const text = $(this).find('.card > :not(.card-footer)').text().toLowerCase();
+                    $(this).toggle(text.includes(searchTerm));
+                });
+            });
+
+            //Dialogo de eliminacion (Aqui se ejecuta la operacio real de eliminar)
+            
+        });
+    </script>
+}
