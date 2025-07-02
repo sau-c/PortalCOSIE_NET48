@@ -43,15 +43,10 @@
                             <div>
                                 <p class="fw-semibold mb-2 text-muted">Permisos:</p>
                                 <div class="d-flex flex-wrap gap-2">
-                                    @*@foreach (var permiso in item.Permisos)
-                                        {
-                                            <span class="badge bg-secondary rounded-pill px-3 py-2">permiso.Nombre</span>
-                                        }*@
-                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Control total</span>
-                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Gestión de documentos</span>
-                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Reportes</span>
-                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Reportes</span>
-                                    <span class="badge bg-secondary rounded-pill px-3 py-2">Reportes</span>
+                                    @foreach (var permiso in item.Permisos)
+                                    {
+                                        <span class="badge bg-secondary rounded-pill px-3 py-2">@permiso.Nombre</span>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -85,7 +80,7 @@
             });
 
             //Dialogo de eliminacion (Aqui se ejecuta la operacio real de eliminar)
-            
+
         });
     </script>
 }

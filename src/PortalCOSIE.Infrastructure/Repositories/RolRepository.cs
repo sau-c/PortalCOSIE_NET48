@@ -4,6 +4,7 @@ using PortalCOSIE.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace PortalCOSIE.Infrastructure.Repositories
             _context = context;
         }
 
-        public IEnumerable<Rol> GetAll() => _context.Roles.ToList();
+        public IEnumerable<Rol> GetAll() => _context.Roles.Include(r => r.Permisos).ToList();
         public Rol GetById(int id) => _context.Roles.Find(id);
         public void Add(Rol rol) => _context.Roles.Add(rol);
         public void Update(Rol rol) => _context.Entry(rol).State = System.Data.Entity.EntityState.Modified;

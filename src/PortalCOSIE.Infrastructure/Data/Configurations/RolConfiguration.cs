@@ -19,6 +19,15 @@ namespace PortalCOSIE.Infrastructure.Configurations
             Property(r => r.Descripcion)
             .HasMaxLength(250);
 
+            //Esto nos ayuda a quitar la convencion plural (PermisoRols)
+            HasMany(r => r.Permisos)
+            .WithMany(p => p.Roles)
+            .Map(m =>
+            {
+                m.ToTable("PermisoRol");
+                m.MapLeftKey("RolId");
+                m.MapRightKey("PermisoId");
+            });
         }
     }
 }

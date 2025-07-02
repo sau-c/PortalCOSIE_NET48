@@ -40,7 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Acceso.cs" />
+    <Compile Include="Entities\Alumno.cs" />
+    <Compile Include="Entities\Carrera.cs" />
     <Compile Include="Entities\Common\AuditableEntity.cs" />
+    <Compile Include="Entities\Documento.cs" />
+    <Compile Include="Entities\Personal.cs" />
+    <Compile Include="Entities\PlanEstudio.cs" />
+    <Compile Include="Entities\Tramite.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Permiso.cs" />
     <Compile Include="Entities\Rol.cs" />

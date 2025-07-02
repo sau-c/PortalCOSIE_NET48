@@ -31,10 +31,10 @@ namespace PortalCOSIE.Infrastructure.Configurations
             Property(u => u.Celular)
             .HasMaxLength(20);
 
-            HasRequired(u => u.Rol)
-            .WithMany(r => r.Usuarios)
-            .HasForeignKey(u => u.RolId)
-            .WillCascadeOnDelete(false); // Puedes cambiar esto según tu lógica
+            HasRequired(a => a.Rol)
+                .WithMany()
+                .HasForeignKey(a => a.RolId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

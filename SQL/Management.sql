@@ -43,25 +43,27 @@ SELECT * FROM dbo.Rol
 --%%%%%%%%%%%%%%%%%%%%%%%%
 --%%%% ELIMINAR TABLAS %%%
 --%%%%%%%%%%%%%%%%%%%%%%%%
---DROP TABLE dbo.Documento
---GO
---DROP TABLE dbo.Tramite
---GO
---DROP TABLE dbo.Estado
---GO
---DROP TABLE dbo.Personal
---GO
---DROP TABLE dbo.Alumno
---GO
---DROP TABLE dbo.Usuario
---GO
---DROP TABLE dbo.Carrera
---GO
---DROP TABLE dbo.FacultadRol
---GO
---DROP TABLE dbo.Facultad
---GO
---DROP TABLE dbo.Rol
---GO
---DROP TABLE dbo.Menu
---GO
+DROP TABLE dbo.Documento
+GO
+DROP TABLE dbo.Tramite
+GO
+DROP TABLE dbo.Estado
+GO
+DROP TABLE dbo.Personal
+GO
+DROP TABLE dbo.Alumno
+GO
+DROP TABLE dbo.Usuario
+GO
+DROP TABLE dbo.Carrera
+GO
+DROP TABLE dbo.PermisoRol
+GO
+DROP TABLE dbo.Permiso
+GO
+DROP TABLE dbo.Rol
+GO
+DROP TABLE dbo.Menu
+GO
+DROP TABLE dbo.PlanEstudio
+GO

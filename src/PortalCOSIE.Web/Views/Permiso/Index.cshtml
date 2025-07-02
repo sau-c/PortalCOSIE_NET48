@@ -66,8 +66,12 @@
                             @Html.DisplayFor(modelItem => item.UpdatedBy)
                         </td>
                         <td>
-                            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id })
+                            <a href="@Url.Action("Editar", new { id = item.Id })" class="btn btn-sm btn-primary d-inline-block">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="@Url.Action("Eliminar", new { id = item.Id })" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
                         </td>
                     </tr>
                 }

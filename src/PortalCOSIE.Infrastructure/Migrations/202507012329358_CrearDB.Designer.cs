@@ -7,13 +7,13 @@ namespace PortalCOSIE.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class Create : IMigrationMetadata
+    public sealed partial class CrearDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Create));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CrearDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507011509298_Create"; }
+            get { return "202507012329358_CrearDB"; }
         }
         
         string IMigrationMetadata.Source

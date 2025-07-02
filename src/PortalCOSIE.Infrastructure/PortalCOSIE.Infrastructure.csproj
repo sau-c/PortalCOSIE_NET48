@@ -91,14 +91,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Configurations\AccesoConfiguration.cs" />
+    <Compile Include="Data\Configurations\AlumnoConfiguration.cs" />
+    <Compile Include="Data\Configurations\CarreraConfiguration.cs" />
+    <Compile Include="Data\Configurations\DocumentoConfiguration.cs" />
     <Compile Include="Data\Configurations\PermisoConfiguration.cs" />
+    <Compile Include="Data\Configurations\PersonalConfiguration.cs" />
+    <Compile Include="Data\Configurations\PlanEstudioConfiguration.cs" />
+    <Compile Include="Data\Configurations\TramiteConfiguration.cs" />
     <Compile Include="Data\Configurations\UsuarioConfiguration.cs" />
     <Compile Include="Data\Configurations\RolConfiguration.cs" />
     <Compile Include="Data\PortalDbContext.cs" />
     <Compile Include="IoC\DependencyContainer.cs" />
-    <Compile Include="Migrations\202507011509298_Create.cs" />
-    <Compile Include="Migrations\202507011509298_Create.Designer.cs">
-      <DependentUpon>202507011509298_Create.cs</DependentUpon>
+    <Compile Include="Migrations\202507012329358_CrearDB.cs" />
+    <Compile Include="Migrations\202507012329358_CrearDB.Designer.cs">
+      <DependentUpon>202507012329358_CrearDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,8 +131,8 @@
     <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202507011509298_Create.resx">
-      <DependentUpon>202507011509298_Create.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507012329358_CrearDB.resx">
+      <DependentUpon>202507012329358_CrearDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
