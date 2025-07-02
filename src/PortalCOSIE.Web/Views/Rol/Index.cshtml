@@ -35,7 +35,7 @@
                             <div class="d-flex align-items-center gap-2">
                                 <span class="badge bg-success">Activo</span>
                                 <i class="fas fa-info-circle" data-bs-toggle="tooltip"
-                                   title="CreatedAt por: @Html.DisplayFor(modelItem => item.CreatedBy) (2024-06-01)&#10;Modificado por: @Html.DisplayFor(modelItem => item.UpdatedBy) (2024-06-15)"></i>
+                                   title="Creado: @Html.DisplayFor(modelItem => item.CreatedBy) (@Html.DisplayFor(modelItem => item.CreatedAt))&#10;Modificado: @Html.DisplayFor(modelItem => item.UpdatedBy) (@Html.DisplayFor(modelItem => item.UpdatedAt))"></i>
                             </div>
                         </div>
                         @*Cuerpo de la card*@

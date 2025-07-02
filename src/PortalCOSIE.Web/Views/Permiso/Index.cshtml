@@ -21,50 +21,29 @@
     <div class="card-body overflow-auto" style="height: calc(100vh - 150px);">
         <div class="container">
 
-            <table class="table table-bordered shadow">
-                <tr class="table-secondary">
-                    <th>
-                        @Html.DisplayNameFor(model => model.Nombre)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Descripcion)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreatedAt)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreatedBy)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UpdatedAt)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UpdatedBy)
-                    </th>
-                    <th></th>
-                </tr>
+            <table id="tblPermiso" class="table table-bordered table-hover shadow">
+                
+                <thead class="table-secondary">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                        <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                        <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
+                        <th>@Html.DisplayNameFor(model => model.CreatedBy)</th>
+                        <th>@Html.DisplayNameFor(model => model.UpdatedAt)</th>
+                        <th>@Html.DisplayNameFor(model => model.UpdatedBy)</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descripcion)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreatedAt)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreatedBy)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UpdatedAt)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UpdatedBy)
-                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CreatedBy)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UpdatedAt)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UpdatedBy)</td>
                         <td>
                             <a href="@Url.Action("Editar", new { id = item.Id })" class="btn btn-sm btn-primary d-inline-block">
                                 <i class="fas fa-edit"></i>
@@ -81,3 +60,17 @@
         </div>
     </div>
 </div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tblPermiso').DataTable({
+                responsive: true,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json'
+                }
+            });
+        });
+    </script>
+}
