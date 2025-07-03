@@ -60,7 +60,7 @@ namespace PortalCOSIE.Web.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "Id,Nombre,Descripcion,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Permiso permiso)
+        public ActionResult Editar([Bind(Include = "Id,Vista,Accion,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Permiso permiso)
         {
             if (ModelState.IsValid)
             {

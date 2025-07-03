@@ -65,5 +65,13 @@ namespace PortalCOSIE.Web.Controllers
             }
             return View(rol);
         }
+        
+        [HttpPost/*, ActionName("Eliminar")*/]
+        [ValidateAntiForgeryToken]
+        public ActionResult Eliminar(int id)
+        {
+            _rolService.Eliminar(id);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -12,13 +12,13 @@ namespace PortalCOSIE.Infrastructure.Configurations
             ToTable("Permiso")
                 .HasKey(r => r.Id);
 
-            Property(r => r.Nombre)
+            Property(r => r.Vista)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            Property(r => r.Descripcion)
+            Property(r => r.Accion)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(100);
         }
     }
 }

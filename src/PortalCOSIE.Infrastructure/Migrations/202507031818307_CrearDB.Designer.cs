@@ -13,7 +13,7 @@ namespace PortalCOSIE.Infrastructure.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202507012329358_CrearDB"; }
+            get { return "202507031818307_CrearDB"; }
         }
         
         string IMigrationMetadata.Source

@@ -21,25 +21,24 @@
     <div class="card-body overflow-auto" style="height: calc(100vh - 150px);">
         <div class="container">
 
-            <table id="tblPermiso" class="table table-bordered table-hover shadow">
-                
+            <table id="tblPermiso" class="table table-bordered shadow display compact">
                 <thead class="table-secondary">
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-                        <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                        <th>@Html.DisplayNameFor(model => model.Vista)</th>
+                        <th>@Html.DisplayNameFor(model => model.Accion)</th>
                         <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
                         <th>@Html.DisplayNameFor(model => model.CreatedBy)</th>
                         <th>@Html.DisplayNameFor(model => model.UpdatedAt)</th>
                         <th>@Html.DisplayNameFor(model => model.UpdatedBy)</th>
-                        <th></th>
+                        <th colspan="2"></th>
                     </tr>
                 </thead>
 
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Vista)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Accion)</td>
                         <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
                         <td>@Html.DisplayFor(modelItem => item.CreatedBy)</td>
                         <td>@Html.DisplayFor(modelItem => item.UpdatedAt)</td>
@@ -48,6 +47,8 @@
                             <a href="@Url.Action("Editar", new { id = item.Id })" class="btn btn-sm btn-primary d-inline-block">
                                 <i class="fas fa-edit"></i>
                             </a>
+                        </td>
+                        <td>
                             <a href="@Url.Action("Eliminar", new { id = item.Id })" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
@@ -66,10 +67,13 @@
     <script>
         $(document).ready(function () {
             $('#tblPermiso').DataTable({
-                responsive: true,
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json'
-                }
+                },
+                paging: false,
+                scrollCollapse: true, //Si hay poco contenido -> no scrollY
+                scrollY: '50vh', //Scroll dinamico
+                //scrollX: true //Scroll dinamico
             });
         });
     </script>

@@ -22,7 +22,7 @@ namespace PortalCOSIE.Infrastructure.Repositories
         public IEnumerable<Rol> GetAll() => _context.Roles.Include(r => r.Permisos).ToList();
         public Rol GetById(int id) => _context.Roles.Find(id);
         public void Add(Rol rol) => _context.Roles.Add(rol);
-        public void Update(Rol rol) => _context.Entry(rol).State = System.Data.Entity.EntityState.Modified;
+        public void Update(Rol rol) => _context.Entry(rol).State = EntityState.Modified;
         public void Delete(Rol rol) => _context.Roles.Remove(rol);
         public void Save() => _context.SaveChanges();
     }

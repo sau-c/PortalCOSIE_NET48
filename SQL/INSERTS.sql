@@ -1,63 +1,57 @@
 USE [PortalCOSIE]
 GO
-
 -- =========================================
 --		Roles
 -- =========================================
-INSERT INTO Rol (Nombre, Descripcion)
+INSERT INTO Rol (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy, Nombre, Descripcion)
 VALUES 
-	('Alumno', 'Rol para estudiantes que realizarán trámites.'),
-	('Personal', 'Rol para trabajadores administrativos o docentes.'),
-	('Administrador', 'Rol para administradores del sistema.')
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Administrador', 'Rol para administradores del sistema.'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Personal', 'Rol para trabajadores administrativos o docentes.'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Alumno', 'Rol para estudiantes que realizarán trámites.')
 GO
 
 -- =========================================
---		Facultades (acciones del sistema)
+--		Permisos (acciones del sistema)
 -- =========================================
-INSERT INTO Facultad (Nombre, Descripcion)
-VALUES
-	('ALTA_USUARIO', 'Permite registrar nuevos usuarios.'),
-	('ALTA_TRAMITE', 'Inicia un nuevo tramite.'),
-	('ALTA_DOCUMENTO', 'Carga de documentos.'),
-	('CONSULTAR_DASHBBOARD', 'Acceso al panel de administración.'),
-	('CONSULTAR_USUARIO', 'Ver datos del usuario.'),
-	('CONSULTAR_TRAMITE', 'Ver estado y contenido del tramite.'),
-	('CONSULTAR_DOCUMENTO', 'Ver documentos cargados por los alumnos.'),
-	('ACTUALIZAR_USUARIO', 'Editar la información personal.'),
-	('ACTUALIZAR_TRAMITE', 'Revisar y aceptar/rechazar trámites.'),
-	('ACTUALIZAR_DOCUMENTO', 'Editar documento de trámite.'),
-	('ACTUALIZAR_CONTRASENA', 'Permite modificar la contraseña.'),
-	('COMENTAR_DOCUMENTO', 'Facultad para comentar documentos.'),
-	('GENERAR_REPORTE', 'Para crear reportes del sistema.')
+INSERT INTO Permiso (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy, Vista, Accion) VALUES 
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Dashboard', 'Ver'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Rol', 'Ver'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Rol', 'Crear'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Rol', 'Editar'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Rol', 'Eliminar'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Usuario', 'Ver'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Usuario', 'Crear'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Usuario', 'Editar'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Usuario', 'Eliminar'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Tramite', 'Ver'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Tramite', 'Crear'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Tramite', 'Editar'),
+	(GETDATE(), 'Administrador', GETDATE(), 'Administrador', 'Tramite', 'Eliminar')
+
 GO
 
 -- =========================================
---		RolFacultad (asignación de facultades)
+--		PermisoRol (asignación de permisos)
 -- =========================================
-INSERT INTO FacultadRol (RolId, FacultadId)
+INSERT INTO PermisoRol (RolId, PermisoId)
 VALUES
-	-- ALUMNO
+	--ADMINISTRAOR
+	(1, 1),
 	(1, 2),
 	(1, 3),
+	(1, 4),
 	(1, 5),
 	(1, 6),
-	(1, 10),
+	(1, 7),
 
 	-- PERSONAL
+	(2, 1),
+	(2, 2),
+	(2, 3),
 	(2, 4),
-	(2, 5),
-	(2, 6),
-	(2, 8),
-	(2, 11),
+	(2, 5)
 
-	--ADMINISTRAOR
-	(3, 1),
-	(3, 4),
-	(3, 7),
-	(3, 9),
-	(3, 10),
-	(3, 12),
-	(3, 13)
+	-- ALUMNO
 GO
 
 -- =========================================

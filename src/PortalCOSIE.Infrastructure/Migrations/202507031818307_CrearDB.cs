@@ -59,8 +59,8 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Nombre = c.String(nullable: false, maxLength: 100),
-                        Descripcion = c.String(nullable: false, maxLength: 250),
+                        Vista = c.String(nullable: false, maxLength: 100),
+                        Accion = c.String(nullable: false, maxLength: 100),
                         CreatedAt = c.DateTime(nullable: false),
                         CreatedBy = c.String(),
                         UpdatedAt = c.DateTime(nullable: false),
