@@ -1,5 +1,5 @@
 ﻿using PortalCOSIE.Application;
-using PortalCOSIE.Application.Interfaces;
+using PortalCOSIE.Application.Interfaces.Common;
 using PortalCOSIE.Domain.Entities;
 using PortalCOSIE.Infrastructure.Data;
 using System;
@@ -15,9 +15,9 @@ namespace PortalCOSIE.Web.Controllers
 {
     public class UsuarioController : Controller
     {
-        private readonly IUsuarioService _usuarioService;
+        private readonly IService<Usuario> _usuarioService;
 
-        public UsuarioController(IUsuarioService usuarioService)
+        public UsuarioController(IService<Usuario> usuarioService)
         {
             _usuarioService = usuarioService;
         }

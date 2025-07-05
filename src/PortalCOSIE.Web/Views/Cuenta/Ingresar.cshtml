@@ -1,0 +1,38 @@
+﻿@model PortalCOSIE.Web.Models.IngresarViewModel
+@{
+    ViewBag.Title = "Ingresar";
+    Layout = "~/Views/Shared/_LayoutPublic.cshtml";
+}
+
+<div class="auth-header">
+    <h2>Iniciar sesión</h2>
+    <p class="text-muted">Accede a tu cuenta</p>
+</div>
+
+
+@using (Html.BeginForm(@*"Ingresar", "Cuenta", FormMethod.Post*@))
+{
+    @Html.AntiForgeryToken()
+
+   <div class="mb-3">
+        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Usuario" })
+        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.PasswordFor(m => m.Contrasena, new { @class = "form-control", placeholder = "Contraseña" })
+        @Html.ValidationMessageFor(m => m.Contrasena, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+    </div>
+
+    <div class="form-text text-center mt-3">
+        ¿Olvidaste tu contraseña? @Html.ActionLink("Recupérala aquí", "Recuperar", "Cuenta")
+    </div>
+
+    <div class="form-text text-center mt-2">
+        ¿No tienes una cuenta? @Html.ActionLink("Regístrate", "Registrar", "Cuenta")
+    </div>
+}

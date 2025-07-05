@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CrearDB : DbMigration
+    public partial class CrearBD : DbMigration
     {
         public override void Up()
         {
@@ -59,7 +59,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Vista = c.String(nullable: false, maxLength: 100),
+                        Controlador = c.String(nullable: false, maxLength: 100),
                         Accion = c.String(nullable: false, maxLength: 100),
                         CreatedAt = c.DateTime(nullable: false),
                         CreatedBy = c.String(),

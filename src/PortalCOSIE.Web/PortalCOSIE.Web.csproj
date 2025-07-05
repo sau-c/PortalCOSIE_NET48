@@ -145,6 +145,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\PermisoController.cs" />
     <Compile Include="Controllers\RolController.cs" />
@@ -152,6 +153,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegistrarViewModel.cs" />
+    <Compile Include="Models\IngresarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,10 +218,11 @@
     <Content Include="Views\Usuario\Editar.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Eliminar.cshtml" />
+    <Content Include="Views\Cuenta\Registrar.cshtml" />
+    <Content Include="Views\Cuenta\Ingresar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

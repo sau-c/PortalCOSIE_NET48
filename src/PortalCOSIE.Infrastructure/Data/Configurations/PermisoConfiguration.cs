@@ -12,7 +12,7 @@ namespace PortalCOSIE.Infrastructure.Configurations
             ToTable("Permiso")
                 .HasKey(r => r.Id);
 
-            Property(r => r.Vista)
+            Property(r => r.Controlador)
                 .IsRequired()
                 .HasMaxLength(100);
 

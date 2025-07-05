@@ -10,40 +10,55 @@
 
     <style>
         body {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            min-height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
+            background: #5A1236;
         }
 
-        .content-wrapper {
+        .auth-container {
+            min-height: 90vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 80px); /* ajusta altura restando footer */
-            padding: 1rem;
+            justify-content: center;
         }
 
-        /* Card base opcional si se usa dentro del RenderBody */
         .auth-card {
-            max-width: 400px;
-            width: 100%;
-            border-radius: 10px;
             background-color: #fff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            max-width: 420px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-text a {
+            color: #6A1B4D;
+            text-decoration: none;
+            font-weight:500;
+        }
+
+            .form-text a:hover {
+                text-decoration: underline;
+            }
+
+        footer {
+            text-align: center;
+            color: #eee;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
-
-    <main>
-        <div class="content-wrapper">
+    <div class="auth-container">
+        <div class="auth-card">
             @RenderBody()
         </div>
-    </main>
-
+    </div>
+    <footer>
+        <p>© @DateTime.Now.Year - PortalCOSIE.</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

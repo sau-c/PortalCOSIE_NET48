@@ -1,5 +1,5 @@
 ﻿using PortalCOSIE.Application;
-using PortalCOSIE.Application.Interfaces;
+using PortalCOSIE.Application.Interfaces.Common;
 using PortalCOSIE.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ namespace PortalCOSIE.Web.Controllers
 {
     public class RolController : Controller
     {
-        private readonly IRolService _rolService;
+        private readonly IService<Rol> _rolService;
 
-        public RolController(IRolService rolService)
+        public RolController(IService<Rol> rolService)
         {
             _rolService = rolService;
         }
@@ -56,6 +56,7 @@ namespace PortalCOSIE.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Editar(Rol rol)
         {
             if (ModelState.IsValid)
@@ -66,11 +67,21 @@ namespace PortalCOSIE.Web.Controllers
             return View(rol);
         }
         
-        [HttpPost/*, ActionName("Eliminar")*/]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Eliminar(int id)
+        public ActionResult Eliminar(int? id)
         {
-            _rolService.Eliminar(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Rol rol = _rolService.ObtenerPorId((int)id);
+            if (rol == null)
+            {
+                return HttpNotFound();
+            }
+            
+            _rolService.Eliminar((int)id);
             return RedirectToAction("Index");
         }
     }

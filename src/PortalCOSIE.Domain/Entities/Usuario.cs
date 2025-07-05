@@ -8,6 +8,7 @@
         public string Correo { get; set; }
         public string Celular { get; set; }
         public int RolId { get; set; }
+
         public virtual Rol Rol { get; set; }
     }
 }

@@ -103,9 +103,9 @@
     <Compile Include="Data\Configurations\RolConfiguration.cs" />
     <Compile Include="Data\PortalDbContext.cs" />
     <Compile Include="IoC\DependencyContainer.cs" />
-    <Compile Include="Migrations\202507031818307_CrearDB.cs" />
-    <Compile Include="Migrations\202507031818307_CrearDB.Designer.cs">
-      <DependentUpon>202507031818307_CrearDB.cs</DependentUpon>
+    <Compile Include="Migrations\202507050202363_CrearBD.cs" />
+    <Compile Include="Migrations\202507050202363_CrearBD.Designer.cs">
+      <DependentUpon>202507050202363_CrearBD.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,8 +131,8 @@
     <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202507031818307_CrearDB.resx">
-      <DependentUpon>202507031818307_CrearDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507050202363_CrearBD.resx">
+      <DependentUpon>202507050202363_CrearBD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

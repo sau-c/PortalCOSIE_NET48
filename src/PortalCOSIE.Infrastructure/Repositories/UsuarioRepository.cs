@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace PortalCOSIE.Infrastructure.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : IRepository<Usuario>
     {
         private readonly PortalDbContext _context;
 

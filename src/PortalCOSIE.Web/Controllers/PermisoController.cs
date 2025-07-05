@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PortalCOSIE.Application.Interfaces.Common;
+using PortalCOSIE.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,15 +8,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PortalCOSIE.Application.Interfaces;
-using PortalCOSIE.Domain.Entities;
 
 namespace PortalCOSIE.Web.Controllers
 {
     public class PermisoController : Controller
     {
-        private readonly IPermisoService _permisoService;
-        public PermisoController(IPermisoService permisoService)
+        private readonly IService<Permiso> _permisoService;
+        public PermisoController(IService<Permiso> permisoService)
         {
             _permisoService = permisoService;
         }
@@ -60,7 +60,7 @@ namespace PortalCOSIE.Web.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "Id,Vista,Accion,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Permiso permiso)
+        public ActionResult Editar([Bind(Include = "Id,Controlador,Accion,CreatedAt,CreatedBy,UpdatedAt,UpdatedBy")] Permiso permiso)
         {
             if (ModelState.IsValid)
             {

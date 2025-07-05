@@ -1,4 +1,4 @@
-﻿using PortalCOSIE.Application.Interfaces;
+﻿using PortalCOSIE.Application.Interfaces.Common;
 using PortalCOSIE.Domain.Entities;
 using PortalCOSIE.Domain.Interfaces;
 using System;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace PortalCOSIE.Application
 {
-    public class UsuarioService : IUsuarioService
+    public class UsuarioService : IService<Usuario>
     {
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IRepository<Usuario> _usuarioRepository;
 
-        public UsuarioService(IUsuarioRepository rolRepository)
+        public UsuarioService(IRepository<Usuario> rolRepository)
         {
             _usuarioRepository = rolRepository;
         }

@@ -1,4 +1,4 @@
-﻿using PortalCOSIE.Application.Interfaces;
+﻿using PortalCOSIE.Application.Interfaces.Common;
 using PortalCOSIE.Domain.Entities;
 using PortalCOSIE.Domain.Interfaces;
 using System;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace PortalCOSIE.Application
 {
-    public class PermisoService : IPermisoService
+    public class PermisoService : IService<Permiso>
     {
-        private readonly IPermisoRepository _permisoRepository;
+        private readonly IRepository<Permiso> _permisoRepository;
 
-        public PermisoService(IPermisoRepository permisoRepository)
+        public PermisoService(IRepository<Permiso> permisoRepository)
         {
             _permisoRepository = permisoRepository;
         }

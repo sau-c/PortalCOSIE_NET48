@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PortalCOSIE.Infrastructure.Repositories
 {
-    public class RolRepository : IRolRepository
+    public class RolRepository : IRepository<Rol>
     {
         private readonly PortalDbContext _context;
 

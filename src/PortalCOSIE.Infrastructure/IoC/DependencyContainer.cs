@@ -1,5 +1,7 @@
 ﻿using PortalCOSIE.Application;
 using PortalCOSIE.Application.Interfaces;
+using PortalCOSIE.Application.Interfaces.Common;
+using PortalCOSIE.Domain.Entities;
 using PortalCOSIE.Domain.Interfaces;
 using PortalCOSIE.Infrastructure.Repositories;
 using Unity;
@@ -11,14 +13,14 @@ namespace PortalCOSIE.Infrastructure.IoC
         public static void RegisterTypes(IUnityContainer container)
         {
             // Register services and repositories as needed
-            container.RegisterType<IRolRepository, RolRepository>();
-            container.RegisterType<IRolService, RolService>();
+            container.RegisterType<IRepository<Rol>, RolRepository>();
+            container.RegisterType<IService<Rol>, RolService>();
             
-            container.RegisterType<IPermisoRepository, PermisoRepository>();
-            container.RegisterType<IPermisoService, PermisoService>();
+            container.RegisterType<IRepository<Permiso>, PermisoRepository>();
+            container.RegisterType<IService<Permiso>, PermisoService>();
 
-            container.RegisterType<IUsuarioRepository, UsuarioRepository>();
-            container.RegisterType<IUsuarioService, UsuarioService>();
+            container.RegisterType<IRepository<Usuario>, UsuarioRepository>();
+            container.RegisterType<IService<Usuario>, UsuarioService>();
         }
     }
 }
